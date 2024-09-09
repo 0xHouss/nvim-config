@@ -21,3 +21,17 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```shell
 git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 ```
+
+Install the ripgrep package:
+
+> Linux Installation
+
+```shell
+sudo apt install ripgrep
+```
+
+> Windows Powershell Installation
+
+```shell
+choco install ripgrep
+```
