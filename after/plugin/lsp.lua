@@ -21,38 +21,57 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {
-    'ts_ls',
-    'lua_ls',
-    'rust_analyzer',
-  },
-  handlers = {
-    function(server)
-      lspconfig[server].setup({
-        capabilities = lsp_capabilities,
-      })
-    end,
-    lua_ls = function()
-      lspconfig.lua_ls.setup({
-        capabilities = lsp_capabilities,
-        settings = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT',
-            },
-            diagnostics = {
-              globals = {'vim'}
-            },
-            workspace = {
-              library = {
-                vim.env.VIMRUNTIME,
-              }
-            }
-          }
-        }
-      })
-    end
-  }
+    ensure_installed = {
+        'ts_ls',
+        'lua_ls',
+        'rust_analyzer',
+        'pyright',
+        'html',
+        'emmet_ls',
+    },
+    handlers = {
+        function(server)
+            lspconfig[server].setup({
+                capabilities = lsp_capabilities,
+            })
+        end,
+        lua_ls = function()
+            lspconfig.lua_ls.setup({
+                capabilities = lsp_capabilities,
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        },
+                        diagnostics = {
+                            globals = {'vim'}
+                        },
+                        workspace = {
+                            library = {
+                                vim.env.VIMRUNTIME,
+                            }
+                        }
+                    }
+                }
+            })
+        end,
+        html = function()
+            lspconfig.html.setup({
+                capabilities = lsp_capabilities,
+            })
+        end,
+        pyright = function()
+            lspconfig.pyright.setup({
+                capabilities = lsp_capabilities,
+            })
+        end,
+        emmet_ls = function()  -- Emmet LSP configuration
+            lspconfig.emmet_ls.setup({
+                capabilities = lsp_capabilities,
+                filetypes = { 'html', 'css', 'typescriptreact', 'javascriptreact' }, -- Add other filetypes as needed
+            })
+        end
+    }
 })
 
 local cmp = require('cmp')
