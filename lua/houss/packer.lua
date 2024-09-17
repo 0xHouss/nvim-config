@@ -39,6 +39,7 @@ return require('packer').startup(function(use)
 
  use({
      "L3MON4D3/LuaSnip",
+     requires = { "rafamadriz/friendly-snippets" },
      -- follow latest release.
      tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
      -- install jsregexp (optional!:).
@@ -58,6 +59,13 @@ return require('packer').startup(function(use)
      requires = { 'nvim-treesitter/nvim-treesitter' },
      config = function()
          require('nvim-ts-autotag').setup()
+     end
+ }
+
+ use {
+     'numToStr/Comment.nvim',
+     config = function()
+         require('Comment').setup()
      end
  }
 end)

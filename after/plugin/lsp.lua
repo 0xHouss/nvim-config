@@ -77,8 +77,8 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
---- loads custom snippets from friendly-snippets
--- require('luasnip.loaders.from_vscode').lazy_load()
+-- loads custom snippets from friendly-snippets
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
   sources = {
@@ -86,7 +86,7 @@ cmp.setup({
     {name = 'nvim_lsp'},
     {name = 'nvim_lua'},
     -- {name = 'buffer', keyword_length = 3},
-    -- {name = 'luasnip', keyword_length = 2},
+    {name = 'luasnip', keyword_length = 2},
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
